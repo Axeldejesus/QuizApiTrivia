@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Catégories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-select 
+        label="Nombre de questions"
+        [(ngModel)]="numberOfQuestions">
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="15">15</ion-select-option>
+        <ion-select-option value="20">20</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select 
+        label="Difficulté"
+        [(ngModel)]="difficulty">
+        <ion-select-option value="any">Toutes</ion-select-option>
+        <ion-select-option value="easy">Facile</ion-select-option>
+        <ion-select-option value="medium">Moyen</ion-select-option>
+        <ion-select-option value="hard">Difficile</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngFor="let category of categories" lines="full">
+      <ion-checkbox 
+        [(ngModel)]="category.selected"
+        (ionChange)="toggleCategory(category.id)"
+        justify="space-between">
+        {{ category.name }}
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="startQuiz()" [disabled]="selectedCategories.length === 0">
+      Commencer le Quiz
+    </ion-button>
+  </div>
+</ion-content>

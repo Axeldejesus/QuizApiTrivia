@@ -1,0 +1,6 @@
+# Angular cache
+.angular/cache
+.angular/dist
+
+# Node modules
+node_modules/
